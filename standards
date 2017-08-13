@@ -1,0 +1,68 @@
+SQL (https://launchbylunch.com/posts/2014/Feb/16/sql-naming-conventions/)
+Основное:
+1. Вместо пробела использовать нижний подчерк: first_name
+2. Использовать только нижний регистр: word_count
+3. Избегать зарезервированых слов: https://www.postgresql.org/docs/9.3/static/sql-keywords-appendix.html
+4. Использовать только единичное число в названиях: team (NOT teams)
+5. Название primary key только id.
+6. Название foreign key должно быть table_id.
+7. В названии индекса должны быть название таблицы и всех полей, который в нем участвуют: person_ix_first_name_last_name
+8. Ограничения (Constraints) должны быть тоже информативными: team_member_pkey
+9. Стандартные поля
+Поля даты:
+* created_at - дата создания
+* updated_at - дата обновления
+* deleted_at - дата удаления
+Сео поля:
+* meta_title
+* meta_description
+* meta_keywords
+* meta_robots
+* seo_text
+* h1
+* alias - сео ссылка
+Другие:
+* id - primary key
+* remote_id - внутренний id клиентов, либо сгенерированный нами поведением
+* url - ссылка
+* status - статус
+* title - название
+* image - название картинки, путь задается в модели для поведения
+* alt - альт для изображения
+* sort - порядок сортировки
+10. Стараться избегать названия name и отдавать предпочтение title
+
+PHP (http://svyatoslav.biz/misc/psr_translation/). Использовать стили PHPStorm.
+Основное:
+1. Не использовать сокращенный тег <? . Регулярка для поиска: <\?(?!php|=).*
+2. Использовать только UTF-8 без BOM-байта. В PHPStorm в меню File есть пункт Remove BOM.
+3. Не использовать в классах никакие символы кроме букв и цыфр, резделение должно быть CamelCase. Регулярка для поиска: \sclass\s[a-z\d]+[^a-z\s\d]+[a-z\d]+\s
+4. Константы должны быть в вернем регистре с подчеркиванием для разделения слов. Регулярка для поиска: \sconst\s(?=\w*[a-z])(?=\w*[A-Z]?)\w*\s
+5. Методы должны быть camelCase, без разделителей. Не использовать _ для обозначения private и protected. Регулярка для поиска (примерная, находит родные функции php): function\s(?=\w*[_])\w*\(
+6. Свойства с базы данных table_column через нижний подчерк, все остальные camelCase. Не использовать _ для обозначения private и protected. Регулярка для поиска: (?:public|private|protected) \$(?=\w*[_])\w*
+7. Последовательность модификаторов долна быть такой, нельзя пропускать модификатор области видимости:
+    abstract/final public/protected/private static
+    Регулярки:
+    static\s(?:abstract\s|final\s)?(?:public\s|private\s|protected\s)
+    (?:abstract\s|final\s)?static(?:public\s|private\s|protected\s)
+    (?:abstract\s|final\s)static(?:public\s|private\s|protected\s)?
+    (?:public\s|private\s|protected\s)(?:abstract\s|final\s)
+8. Каждый файл с PHP-кодом должен иметь в конце пустую строку.
+9. Не использовать ?> в файлах, которые содержат только PHP-код.
+10. В конце непустых строк не должно быть пробелов.
+11. В одной строке не должно быть более одного выражения.
+12. Не использовать в PHP слово var для обьявления переменных. Регулярка: var\s
+13. Не использовать обьявления множества свойств в одном выражении: Регулярка: (?:public|protected|private)\s\$\w+, \$\w+
+14. Использовать elseif вместо else if. Регулярка: else\s+if
+15. В конструкции switch всегда использовать break, если специально пропущено break, то использовать комментарий // no break.
+    Примерные регулярки:
+    \scase((?!break)[\s\S])*\s(?:case|default)
+    \s(?:case:|default:)((?!break)[\s\S])*}
+
+JS (https://learn.javascript.ru/coding-style). Использовать стили PHPStorm.
+Основное:
+1. Для события document ready в jQuery использовать ТОЛЬКО $(handler); синтаксис. Регулярка: \$\s*\(\s*['"]?document['"]?\s*\)\s*\.\s*\(\s*ready
+2. Обработчики на динамические элементы (если есть хоть малейшая вероятность загрузки контента динамически через AJAX), ставим через $(document).on(event, selector, handler);
+3. (https://learn.javascript.ru/coding-style#именование) Переменные называть существительными, функции - глаголы, или doSomething - верблюжья нотация, начиная с глагола. НЕ ИСПОЛЬЗОВАТЬ ТРАНСЛИТ, только английские слова.
+4. (https://learn.javascript.ru/coding-style#функции-под-кодом) Зависимые функции располагать ниже по коду.
+5. Просьба, по возможности начинать использовать JSDoc (http://usejsdoc.org/ раздел Block Tags). Зачем? Чтобы и разработчик, и IDE понимали что происходит, что передавать и что возвращать (https://learn.javascript.ru/coding-style#хорошие-комментарии).

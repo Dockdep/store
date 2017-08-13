@@ -1,0 +1,7 @@
+/index.php
+/index-test.php
+/sitemap[\d]*.xml
+/sitemap.xml
+/hotline.xml
+/feed.csv
+/yaml.xml

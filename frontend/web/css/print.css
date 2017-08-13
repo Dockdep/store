@@ -1,0 +1,205 @@
+*{
+    margin: 0;
+    padding: 0;}
+body {
+    font-family: 'Ubuntu' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    color: #000 !important;
+    line-height: 1.2 !important;
+}
+a {color: inherit}
+img {
+    border: none;
+}
+[class*="section-box"] {
+    width: 100%;
+    position: relative;
+    float: left;
+}
+.box-wr {margin: 0 auto; width: 960px;}
+.box-all {width: 960px; float: left; box-sizing: border-box; padding: 0 10px; position: relative}
+.style, .artbox_cab-wr {
+    width: 100%;
+    float: left;
+}
+._print-header-wr {
+    margin-top: 55px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+}
+._print_header-img {
+    min-width: 160px;
+    height: 95px;
+    float: left;
+}
+._print_header-img img {
+    width: 155px;
+    height: 95px;
+}
+._print_slogan-wr {width: 210px;float: left}
+._print_slogan, ._print_graph, ._print_tel {
+    width: 100%;
+    height: 95px;
+    display: table-cell;
+    vertical-align: middle;
+}
+._print_slogan {
+    color: inherit;
+    font-size: 16px;
+    text-align: center;
+    font-family: arial;
+}
+._print_graph-wr {
+    width: 300px;
+    float: right;
+}
+._print_graph {
+    text-align: right;
+    color: inherit;
+    width: 300px;
+}
+._print_graph span {
+    font-weight: 600;
+    color: inherit;
+}
+._print_tel-wr {
+    width: 170px;
+    float: right;
+}
+._print_tel {
+    width: 170px;
+}
+._print_tel span {
+    width: 100%;
+    display: block;
+    float: left;
+    font-size: 18px;
+    color: inherit;
+    position: relative;
+}
+._print_tel span:before {
+    position: absolute;
+    content: '';
+    top:50%;
+    margin-top: -11px;
+    left: -29px;
+    width: 21px;
+    height: 21px;
+}
+.city_ph_:before {
+    background: url("../images/print/ico_phone-1.jpg") 50% 50% no-repeat;
+}
+.mts_ph_:before {
+    background: url("../images/print/ico_phone-2.jpg") 50% 50% no-repeat;
+}
+table._print_title, table._print_tovar {
+    width: 100%;
+    border-collapse: collapse;
+    border: 0;
+    border-bottom: 1px solid #737373;
+    margin-top: 15px;
+}
+table._print_title td {font-size: 14px; color: inherit; height: 35px}
+._print_orders-num {
+    font-size: 16px;
+    font-weight: 700;
+    color: inherit;
+    text-transform: uppercase;
+    margin-top: 36px;
+}
+td._print_img {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #737373;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+}
+td._print_img img {
+    max-height: 78px;
+    max-width: 78px;
+    vertical-align: middle;
+}
+table._print_tovar tr {
+    margin-top: 20px;
+    float: left;
+    width: 100%;
+}
+table._print_tovar tr:first-child {
+    margin-top: 7px;
+}
+td._print_name {
+    width: 350px;
+    text-align: left;
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+td._print_sku {
+    width: 100px;
+}
+td._print_quant {
+    text-align: right;
+    width: 170px;
+}
+td._print_price {
+    text-align: right;
+    width: 240px;
+}
+table._print_tovar {border-bottom: none; font-size: 14px; color: inherit}
+._print_delivery {
+    margin-top: 15px;
+    border-top: 1px solid #737373;
+    border-bottom: 1px solid #333;
+    height: 40px;
+}
+._print_delivery div {
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
+    width: 600px;
+    color: inherit;
+    float: left;
+    box-sizing: border-box;
+}
+._print_delivery div:first-child {
+    width: 200px;
+    padding-left: 110px;
+    text-align: left;
+}
+._print_coast {
+    font-size: 14px;
+    text-align: right;
+    height: 50px;
+    line-height: 50px;
+    color: inherit;
+}
+._print_coast span {
+    font-weight: 700;
+}
+._print_details-title {
+    font-size: 16px;
+    color: inherit;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+table._print_det {
+    width: 100%;
+    border-collapse: collapse;
+    border: 0;
+    margin-top: 16px;
+}
+table._print_det:first-child {
+    margin-top: 15px;
+}
+table._print_det td {
+    font-size: 14px;
+    color: inherit;
+    text-align: left;
+    height: 34px;
+}
+table._print_det td:first-child {
+    width: 147px;
+}
+._print_details {margin-bottom: 40px; margin-top: 16px}

@@ -1,0 +1,22 @@
+<?php
+    return [
+        'Select category'                            => 'Выберите категорию ...',
+        'Select tag'                                 => 'Выберите тэг ...',
+        'Has no parent rubric'                       => 'Без категории',
+        'Waiting for results'                        => 'Загрузка ...',
+        'Select related products'                    => 'Выберите сопутствующие товары',
+        'Select related articles'                    => 'Выберите статьи',
+        'Blog Articles'                              => 'Статьи блога',
+        'Create Blog Article'                        => 'Создать статью',
+        'Update Blog Article: '                      => 'Обновить статью: ',
+        'Not active'                                 => 'Не активна',
+        'Active'                                     => 'Активна',
+        'Are you sure you want to delete this item?' => 'Вы точно хотите это удалить ?',
+        'Update'                                     => 'Обновить',
+        'Blog Categories'                            => 'Рубрики',
+        'Create Blog Category'                       => 'Создать рубрику',
+        'Update Blog Category: '                     => 'Обновить рубрику: ',
+        'Blog Tags'                                  => 'Тэги',
+        'Create Blog Tag'                            => 'Создать тэг',
+        'Update Blog Tag: '                          => 'Обновить тэг: ',
+    ];

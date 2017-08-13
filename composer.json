@@ -1,0 +1,82 @@
+{
+  "name": "yiisoft/yii2-app-advanced",
+  "description": "Yii 2 Advanced Project Template",
+  "keywords": [
+    "yii2",
+    "framework",
+    "advanced",
+    "project template"
+  ],
+  "homepage": "http://www.yiiframework.com/",
+  "type": "project",
+  "license": "BSD-3-Clause",
+  "support": {
+    "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+    "forum": "http://www.yiiframework.com/forum/",
+    "wiki": "http://www.yiiframework.com/wiki/",
+    "irc": "irc://irc.freenode.net/yii",
+    "source": "https://github.com/yiisoft/yii2"
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4.0",
+    "yiisoft/yii2": ">=2.0.6",
+    "yiisoft/yii2-bootstrap": "*",
+    "yiisoft/yii2-swiftmailer": "*",
+    "yiisoft/yii2-jui": "^2.0",
+    "dmstr/yii2-adminlte-asset": "2.*",
+    "bower-asset/admin-lte": "*",
+    "FortAwesome/Font-Awesome": "*",
+    "codeception/codeception": "*",
+    "kartik-v/yii2-mpdf": "@dev",
+    "kartik-v/yii2-editable": "*",
+    "kartik-v/yii2-widget-select2": "@dev",
+    "kartik-v/yii2-grid": "@dev",
+    "kartik-v/yii2-widget-fileinput": "@dev",
+    "mihaildev/yii2-ckeditor": "*",
+    "mihaildev/yii2-elfinder": "^1.1",
+    "kartik-v/yii2-widget-colorinput": "*",
+    "kartik-v/yii2-widget-datepicker": "*",
+    "developeruz/yii2-db-rbac": "*",
+    "kartik-v/yii2-widgets": "@dev",
+    "wbraganca/yii2-dynamicform": "dev-master",
+    "kartik-v/yii2-date-range": "@dev",
+    "yurkinx/yii2-image": "dev-master",
+    "bower-asset/remarkable-bootstrap-notify": "*",
+    "bower-asset/jquery.lazyload": "*",
+    "bower-asset/fancybox": "*",
+    "yiier/yii2-chartjs-widget": "*",
+    "2amigos/yii2-highcharts-widget": "~1.0",
+    "fxp/composer-asset-plugin": "^1.2"
+  },
+  "require-dev": {
+    "yiisoft/yii2-codeception": "*",
+    "yiisoft/yii2-debug": "*",
+    "yiisoft/yii2-gii": "*",
+    "yiisoft/yii2-faker": "*"
+  },
+  "config": {
+    "process-timeout": 1800
+  },
+  "extra": {
+    "asset-installer-paths": {
+      "npm-asset-library": "vendor/npm",
+      "bower-asset-library": "vendor/bower"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": "php init --env=Development --overwrite=n"
+  },
+  "autoload": {
+    "psr-4": {
+      "artweb\\artbox\\": "artweb/artbox/",
+      "artweb\\artbox\\design\\": "artweb/artbox-design/",
+      "artweb\\artbox\\ecommerce\\": "artweb/artbox-ecommerce/",
+      "artweb\\artbox\\file\\": "artweb/artbox-file/",
+      "artweb\\artbox\\language\\": "artweb/artbox-language/",
+      "artweb\\artbox\\seo\\": "artweb/artbox-seo/",
+      "artweb\\artbox\\event\\": "artweb/artbox-event/",
+      "yii\\elasticsearch\\": "common/components/yii2-elasticsearch"
+    }
+  }
+}

@@ -1,0 +1,1 @@
+cd /opt/dev.extremstyle.ua; git pull; cd artweb/artbox; git pull; cd ../artbox-ecommerce; git pull; cd ../artbox-blog; git pull; cd ../artbox-comment; git pull; cd ../artbox-design; git pull; cd ../artbox-file; git pull; cd ../artbox-language; git pull; cd ../artbox-seo; git pull; cd ../artbox-event; git pull;

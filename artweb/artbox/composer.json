@@ -1,0 +1,27 @@
+{
+  "name": "artweb/artbox",
+  "description": "Yii2 light-weight CMS",
+  "license": "BSD-3-Clause",
+  "minimum-stability": "dev",
+  "type": "yii2-extension",
+  "require": {
+    "php": ">=5.4",
+    "yiisoft/yii2": "*",
+    "developeruz/yii2-db-rbac": "*",
+    "artweb/artbox-ecommerce": "dev-master",
+    "artweb/artbox-language": "dev-master",
+    "kartik-v/yii2-widget-select2": "@dev",
+    "kartik-v/yii2-grid": "@dev",
+    "kartik-v/yii2-mpdf": "@dev",
+    "kartik-v/yii2-widget-fileinput": "@dev",
+    "mihaildev/yii2-ckeditor": "*",
+    "mihaildev/yii2-elfinder": "^1.1",
+    "kartik-v/yii2-widget-colorinput": "*",
+    "kartik-v/yii2-widget-datepicker": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "artweb\\artbox\\": ""
+    }
+  }
+}

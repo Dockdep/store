@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /basket
+Disallow: /promo
+Disallow: /signup
+Disallow: /search
+Host: extremstyle.ua
+Sitemap: https://extremstyle.ua/sitemap.xml

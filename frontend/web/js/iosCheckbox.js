@@ -1,0 +1,1 @@
+!function(e){e.fn.extend({iosCheckbox:function(){e(this).each(function(){var c=e(this),s=jQuery("<div>",{"class":"check-slide"}).append(jQuery("<div>",{"class":"inner-check-slide"}));c.is(":checked")&&s.addClass("checked"),c.hide().after(s),s.click(function(){s.toggleClass("checked"),s.hasClass("checked")?c.prop("checked",!0):c.prop("checked",!1)})})}})}(jQuery);
