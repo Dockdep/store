@@ -80,7 +80,6 @@
                 'price',
                 'price_old',
                 'stock',
-                'productUnit.lang.title',
                 [
                     'attribute' => 'product_id',
                     'value'     => Html::a(

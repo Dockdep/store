@@ -30,19 +30,3 @@
 
 <?= $form->field($model_lang, '[' . $language->id . ']seo_text')
          ->textarea([ 'rows' => 6 ]) ?>
-
-<?= $form->field($model_lang, '[' . $language->id . ']history')
-         ->widget(
-             CKEditor::className(),
-             [
-                 'editorOptions' => ElFinder::ckeditorOptions(
-                     'elfinder',
-                     [
-                         'preset'               => 'full',
-                         'inline'               => false,
-                         'filebrowserUploadUrl' => Yii::$app->getUrlManager()
-                                                            ->createUrl('file/uploader/images-upload'),
-                     ]
-                 ),
-             ]
-         ) ?>

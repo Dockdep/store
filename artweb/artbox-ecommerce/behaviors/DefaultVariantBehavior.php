@@ -1,6 +1,7 @@
 <?php
     namespace artweb\artbox\ecommerce\behaviors;
     
+    use artweb\artbox\ecommerce\models\ProductImage;
     use artweb\artbox\language\models\Language;
     use artweb\artbox\ecommerce\models\ProductVariantLang;
     use yii\base\Behavior;
@@ -48,18 +49,18 @@
              */
             $defaultVariant = new ProductVariant();
             $defaultVariant->product_id = $this->owner->id;
-            
+
             /**
              * Gets default unit for variant
              */
-            $defaultUnit = ProductUnit::find()
-                                      ->where(
-                                          [
-                                              'is_default' => true,
-                                          ]
-                                      )
-                                      ->one();
-            $defaultVariant->product_unit_id = $defaultUnit->id;
+//            $defaultUnit = ProductUnit::find()
+//                                      ->where(
+//                                          [
+//                                              'is_default' => true,
+//                                          ]
+//                                      )
+//                                      ->one();
+//            $defaultVariant->product_unit_id = $defaultUnit->id;
             $defaultVariant->stock = 1;
             
             $defaultVariant->sku = 'default';
@@ -91,15 +92,15 @@
             $stock = Stock::find()
                           ->one();
             
-            //            $image = ProductImage::find()
-            //                                 ->where(
-            //                                     [
-            //                                         'product_id' => $this->owner->product_id,
-            //                                     ]
-            //                                 )
-            //                                 ->one();
-            //                    $image->product_variant_id = $defaultVariant->product_variant_id;
-            //                    $image->save();
+                        $image = ProductImage::find()
+                                             ->where(
+                                                 [
+                                                     'product_id' => $this->owner->product_id,
+                                                 ]
+                                             )
+                                             ->one();
+                                $image->product_variant_id = $defaultVariant->product_variant_id;
+                                $image->save();
             
             /**
              * Add a new stock record

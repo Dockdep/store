@@ -22,12 +22,10 @@
      * @property double               $price
      * @property double               $price_old
      * @property double               $stock
-     * @property integer              $product_unit_id
      * @property string               $fullname
      * @property TaxOption[]          $options
      * @property TaxGroup[]           $groups
      * @property TaxOption[]          $filterOptions
-     * @property ProductUnit          $productUnit
      * @property Product              $product
      * @property Category[]           $categories
      * @property Category             $category
@@ -137,14 +135,6 @@
                 [
                     [
                         'product_id',
-                        'product_unit_id',
-                    ],
-                    'required',
-                ],
-                [
-                    [
-                        'product_id',
-                        'product_unit_id',
                     ],
                     'integer',
                 ],
@@ -170,13 +160,6 @@
                     'safe',
                 ],
                 [
-                    [ 'product_unit_id' ],
-                    'exist',
-                    'skipOnError'     => true,
-                    'targetClass'     => ProductUnit::className(),
-                    'targetAttribute' => [ 'product_unit_id' => 'id' ],
-                ],
-                [
                     [ 'product_id' ],
                     'exist',
                     'skipOnError'     => true,
@@ -198,20 +181,12 @@
                 'price'           => Yii::t('product', 'Price'),
                 'price_old'       => Yii::t('product', 'Price Old'),
                 'stock'           => Yii::t('product', 'Stock'),
-                'product_unit_id' => Yii::t('product', 'Product Unit ID'),
                 'stock_caption'   => Yii::t('product', 'Stock'),
                 'image'           => Yii::t('product', 'Image'),
                 'images'          => Yii::t('product', 'Images'),
             ];
         }
-        
-        /**
-         * @return \yii\db\ActiveQuery
-         */
-        public function getProductUnit()
-        {
-            return $this->hasOne(ProductUnit::className(), [ 'id' => 'product_unit_id' ]);
-        }
+
         
         /**
          * @return \yii\db\ActiveQuery
@@ -478,8 +453,6 @@
         {
             parent::afterSave($insert, $changedAttributes);
 
-            Catalog::addRecord($this->product);
-
             if (!empty($this->options)) {
                 $options = TaxOption::findAll($this->options);
                 $this->unlinkAll('options', true);
@@ -542,7 +515,6 @@
         public function beforeDelete()
         {
             if (parent::beforeDelete()) {
-                Catalog::deleteRecord($this->product);
                 return true;
             } else {
                 return false;

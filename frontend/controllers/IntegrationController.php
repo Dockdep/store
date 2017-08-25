@@ -3,17 +3,16 @@ namespace frontend\controllers;
 
 use artweb\artbox\ecommerce\models\Brand;
 use artweb\artbox\ecommerce\models\Category;
-//use backend\models\Cars;
-//use backend\models\Catalog;
-//use backend\models\Category;
-//use common\models\Items;
-//use backend\models\ItemsCarData;
-//use common\models\ItemsCatalog;
+use artweb\artbox\ecommerce\models\Product;
+use artweb\artbox\ecommerce\models\ProductCategory;
+use artweb\artbox\ecommerce\models\ProductImage;
+use artweb\artbox\ecommerce\models\ProductVariant;
 use yii\base\Controller;
 use yii\base\Exception;
 
 class IntegrationController extends Controller{
 
+    public $result = [];
     public function getItemData(){
       return '  [  
       {
@@ -102,10 +101,10 @@ class IntegrationController extends Controller{
             } else {
                 throw new Exception("Данные о товарах ожидаются в виде массива.");
             }
-            die();
+            die(\GuzzleHttp\json_encode($this->result));
 
         } catch (Exception $e) {
-            echo 'Выброшено исключение: ',  $e->getMessage(), "\n";
+            echo 'Выброшено исключение: ',  $e->getMessage(), "\n", ' на строке ', $e->getLine(), "\n";
         }
     }
 
@@ -148,6 +147,9 @@ class IntegrationController extends Controller{
             $model->status    = $category->status;
             $model->parent_id =  $parent ? $parent->id : 0;
             $model->image = $category->image;
+            if(!$model->validate()){
+                throw new Exception(print_r($model->getErrors()));
+            }
             $model->save();
             $category_id = $model->id;
         }
@@ -168,6 +170,9 @@ class IntegrationController extends Controller{
         }
         $model->remote_id = $brand->manufacturer_id;
         $model->image = $brand->image;
+        if(!$model->validate()){
+            throw new Exception(print_r($model->getErrors()));
+        }
         $model->save();
 
         return $model->id;
@@ -175,6 +180,97 @@ class IntegrationController extends Controller{
 
 
     private function SaveItem($item){
-        print_r($item);
+
+        $model = Product::find()->joinWith('lang')->where(["remote_id" => $item->model])->one();
+
+        $new_product = false;
+
+        if(!$model instanceof Product){
+            $new_product = true;
+            $model = new Product();
+            $model->generateLangs();
+            foreach ($model->modelLangs as $lang) {
+                $lang->title = $item->name;
+            }
+        } else {
+            $model->lang->title = $item->name;
+        }
+
+        $model->remote_id = $item->model;
+        $model->brand_id = $item->brand;
+        if(!$model->validate()){
+            throw new Exception(print_r($model->getErrors()));
+        }
+        $model->save();
+
+
+
+        $variant_id = $this->SaveItemVariant($new_product, $model, $item);
+
+        $this->SaveProductCategory($new_product, $model, $item);
+
+        $this->SaveProductImage($new_product,$model,$item,$variant_id);
+
+        $this->result[$item->model] = $model->id;
+
+    }
+
+    private function SaveProductCategory($new_product, $model, $item){
+        if(!$new_product){
+            $data = ProductCategory::find()
+                ->where(["product_id"=>$model->id,
+                    "category_id"=>$item->category_id])
+                ->one();
+            if($data instanceof ProductCategory){
+                $data->delete();
+            }
+        }
+
+        $category = new ProductCategory();
+        $category->product_id = $model->id;
+        $category->category_id = $item->category_id;
+        if(!$category->validate()){
+            throw new Exception(print_r($category->getErrors()));
+        }
+        $category->save();
+    }
+
+    private function SaveProductImage($new_product,$model,$item,$variant_id ){
+        if($new_product || !isset($model->image)){
+            $image = new ProductImage();
+            $image->product_id = $model->id;
+            $image->product_variant_id = $variant_id;
+        } else {
+            $image = $model->image;
+        }
+        $image->image = $item->image;
+        if(!$image->validate()){
+            throw new Exception(print_r($image->getErrors()));
+        }
+        $image->save();
+    }
+
+    private function SaveItemVariant($new_product, $model, $item){
+        if($new_product){
+            $variant = new ProductVariant();
+            $variant->product_id = $model->id;
+            $variant->generateLangs();
+            foreach ($variant->modelLangs as $lang) {
+                $lang->title = $item->name;
+            }
+        } else {
+            $variant  = $model->variant;
+            $variant->lang->title = $item->name;
+        }
+
+        $variant->sku = $item->sku;
+        $variant->price = $item->price;
+        $variant->remote_id = $item->model;
+        $variant->stock = $item->quantity;
+        if(!$variant->validate()){
+            throw new Exception(print_r($variant->getErrors()));
+        }
+        $variant->save();
+        return $variant->id;
     }
 }

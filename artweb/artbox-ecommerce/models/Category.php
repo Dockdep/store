@@ -27,9 +27,7 @@
      * @property integer           $depth
      * @property string            $image
      * @property string            $icon
-     * @property integer           $product_unit_id
      * @property Product[]         $products
-     * @property ProductUnit       $productUnit
      * @property ProductCategory[] $productCategories
      * @property Brand[]           $brands
      * @property TaxGroup[]        $taxGroups
@@ -106,7 +104,6 @@
                     [
                         'parent_id',
                         'depth',
-                        'product_unit_id',
                         'sort',
                         'sort2',
                     ],
@@ -133,7 +130,6 @@
                 'depth'           => Yii::t('product', 'Depth'),
                 'image'           => Yii::t('product', 'Image'),
                 'imageUrl'        => Yii::t('product', 'Image'),
-                'product_unit_id' => Yii::t('product', 'Product Unit ID'),
                 'remote_id'       => Yii::t('product', 'Remote ID'),
                 'sort'            => Yii::t('product', 'Порядок вывода'),
                 'sort2'           => Yii::t('product', 'Порядок вывода на главной'),
@@ -145,14 +141,7 @@
         {
             return new CategoryQuery(get_called_class());
         }
-        
-        /**
-         * @return \yii\db\ActiveQuery
-         */
-        public function getProductUnit()
-        {
-            return $this->hasOne(ProductUnit::className(), [ 'id' => 'product_unit_id' ]);
-        }
+
         
         /**
          * @return ActiveQuery

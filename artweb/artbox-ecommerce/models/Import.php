@@ -556,7 +556,6 @@
                             );
                         }
                     }
-                    $_productVariant->product_unit_id = 1;
                     $_productVariant->sku = $mod_art_parsed[ 'name' ];
                     $_productVariant->price = $mod_cost;
                     $_productVariant->price_old = $mod_old_cost;

@@ -3,7 +3,6 @@
     use artweb\artbox\language\widgets\LanguageForm;
     use artweb\artbox\ecommerce\models\Product;
     use artweb\artbox\ecommerce\models\ProductStock;
-    use artweb\artbox\ecommerce\models\ProductUnit;
     use artweb\artbox\ecommerce\models\ProductVariant;
     use artweb\artbox\ecommerce\models\ProductVariantLang;
     use artweb\artbox\ecommerce\models\TaxGroup;
@@ -158,18 +157,7 @@ $(".dynamicform_wrapper").on("limitReached", function(e, item) {
         </div>
     </div><!-- .panel -->
     <?php DynamicFormWidget::end(); ?>
-    
-    <?= $form->field($model, 'product_unit_id')
-             ->dropDownList(
-                 ArrayHelper::map(
-                     ProductUnit::find()
-                                ->with('lang')
-                                ->all(),
-                     'id',
-                     'lang.title'
-                 )
-             )
-             ->label(Yii::t('product', 'Unit')) ?>
+
     
     <?php if (!empty( $groups )) {
         foreach ($groups->with('lang')

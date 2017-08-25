@@ -128,7 +128,7 @@
                 'language'       => [
                     'class' => LanguageBehavior::className(),
                 ],
-                'defaultVariant' => DefaultVariantBehavior::className(),
+          //      'defaultVariant' => DefaultVariantBehavior::className(),
                 'size_image'     => [
                     'class'  => SaveImgBehavior::className(),
                     'fields' => [
@@ -630,7 +630,7 @@
         public function afterSave($insert, $changedAttributes)
         {
             parent::afterSave($insert, $changedAttributes);
-            
+
             if (!empty($this->categories)) {
                 $categories = Category::findAll($this->categories);
                 $this->unlinkAll('categories', true);
@@ -638,7 +638,7 @@
                     $this->link('categories', $category);
                 }
             }
-            
+
             if (!empty($this->options)) {
                 $options = TaxOption::findAll($this->options);
                 $this->unlinkAll('options', true);
@@ -646,7 +646,7 @@
                     $this->link('options', $option);
                 }
             }
-            Catalog::addRecord($this);
+//            Catalog::addRecord($this);
         }
         
         /**

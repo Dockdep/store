@@ -186,7 +186,6 @@
                                 'sku'             => $fakers[ 2 ]->uuid,
                                 'price'           => $fakers[ 2 ]->randomFloat(2, 100, 10000),
                                 'stock'           => 10,
-                                'product_unit_id' => 1,
                             ]
                         );
                         $variant->setOptions(

@@ -181,13 +181,13 @@
             /**
              * @var $catalog \yii\elasticsearch\Query;
              */
-            if($params){
-                $catalog = CatalogFilterHelper::setQueryParams($params, $category->id, $lang->id);
-                $catalog->limit(9999);
-                $catalog->createCommand();
-                $result = $catalog->column('id');
-                $query->andWhere(['product.id'=>$result]);
-            }
+//            if($params){
+//                $catalog = CatalogFilterHelper::setQueryParams($params, $category->id, $lang->id);
+//                $catalog->limit(9999);
+//                $catalog->createCommand();
+//                $result = $catalog->column('id');
+//                $query->andWhere(['product.id'=>$result]);
+//            }
 
 
             return $query;
@@ -221,13 +221,13 @@
             /**
              * @var $catalog \yii\elasticsearch\Query;
              */
-            if($params){
-                $catalog = CatalogFilterHelper::setQueryParams($params, $category->id, $lang->id);
-                $catalog->limit(9999);
-                $catalog->createCommand();
-                $result = $catalog->column('id');
-                $query->andWhere(['product.id'=>$result]);
-            }
+//            if($params){
+//                $catalog = CatalogFilterHelper::setQueryParams($params, $category->id, $lang->id);
+//                $catalog->limit(9999);
+//                $catalog->createCommand();
+//                $result = $catalog->column('id');
+//                $query->andWhere(['product.id'=>$result]);
+//            }
 
 
             return $query->one();
